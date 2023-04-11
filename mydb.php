@@ -41,36 +41,7 @@ class MyDB
 			echo $e;
 		}
 	}
-
-	public function isTableEmpty() {
-		try {
-			$stm = $this->dbh->query ( 'SELECT * FROM ' . DB_PHOTO_TABLE_NAME );
-			$row = $stm->fetch();
-			if ($row) {
-				return false;
-			} else {
-				return true;
-			}
-		} catch ( PDOException $e ) {
-			error_log($e);
-			echo $e;
-		}
-	}
-	public function createTable() {
-		try {
-			$stm = $this->dbh->query ( 'CREATE TABLE ' . DB_PHOTO_TABLE_NAME . ' (
-				' . DB_PHOTO_TITLE_COL_NAME . ' VARCHAR(255) NOT NULL,
-				' . DB_PHOTO_DESCRIPTION_COL_NAME . ' VARCHAR(255) NOT NULL,
-				' . DB_PHOTO_CREATIONDATE_COL_NAME . ' VARCHAR(255) NOT NULL,
-				' . DB_PHOTO_KEYWORDS_COL_NAME . ' VARCHAR(255) NOT NULL,
-				' . DB_PHOTO_S3REFERENCE_COL_NAME . ' VARCHAR(255) NOT NULL
-			)' );
-		} catch ( PDOException $e ) {
-			error_log($e);
-			echo $e;
-		}
-	}
-	public function populateTable() {
+	public function populateTableWithData() {
 		try {
 			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 1", "Description 1", "2017-01-01", "Keyword 1", "https://'.BUCKET_NAME.'amazonaws.com/Photo1.jpg")' );
 			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 2", "Description 2", "2017-01-02", "Keyword 2", "https://'.BUCKET_NAME.'amazonaws.com/Photo2.jpg"' );
@@ -82,5 +53,29 @@ class MyDB
 			echo $e;
 		}
 	}
+
+	public function populateTable() {
+		# check if there is a table and then create
+		$sql = "CREATE TABLE IF NOT EXISTS " . DB_PHOTO_TABLE_NAME . " (
+				" . DB_PHOTO_TITLE_COL_NAME . " VARCHAR(255) NOT NULL,
+				" . DB_PHOTO_DESCRIPTION_COL_NAME . " VARCHAR(255) NOT NULL,
+				" . DB_PHOTO_CREATIONDATE_COL_NAME . " DATE NOT NULL,
+				" . DB_PHOTO_KEYWORDS_COL_NAME . " VARCHAR(255) NOT NULL,
+				" . DB_PHOTO_S3REFERENCE_COL_NAME . " VARCHAR(255) NOT NULL
+			)";
+		$this->dbh->query($sql);
+
+		# check if there is any data in the table and then populate
+		$sql = "SELECT * FROM " . DB_PHOTO_TABLE_NAME;
+		$stm = $this->dbh->query($sql);
+		$count = $stm->rowCount();
+		#if empty, then populate
+
+		if ($count == 0) {
+			$this->populateTableWithData();
+		}
+		
+	}
+	
 }
 ?>
