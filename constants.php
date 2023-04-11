@@ -33,11 +33,11 @@
 */
 
 // [ACTION REQUIRED] your full name
-define('STUDENT_NAME', 'Daniel Andrews');
+define('STUDENT_NAME', 'Suchat Tangjarukij');
 // [ACTION REQUIRED] your Student ID
-define('STUDENT_ID', '100743836');
+define('STUDENT_ID', '103511958');
 // [ACTION REQUIRED] your tutorial session
-define('TUTORIAL_SESSION', 'Sunday 09:15AM');
+define('TUTORIAL_SESSION', 'Thursday 4:30PM');
 
 // [ACTION REQUIRED] name of the S3 bucket that stores images
 define('BUCKET_NAME', 'student-photo-bucket');
