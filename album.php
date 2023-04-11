@@ -7,6 +7,16 @@
 ini_set('display_errors', 1);
 require 'mydb.php';
 require_once 'constants.php';
+$my_db = new MyDB();
+## if database is empty, create a new table, polulate using POPULATE.sql
+if ($my_db->isTableEmpty()) {
+	$my_db->createTable();
+	$my_db->populateTable();
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>

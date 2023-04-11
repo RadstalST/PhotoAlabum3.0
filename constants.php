@@ -31,7 +31,7 @@
 * 	============ READ THE ABOVE !!! ============ 
 * 	============ READ THE ABOVE !!! ============ 
 */
-
+// git clone https://github.com/RadstalST/PhotoAlabum3.0.git /var/www/htmlcos80001/photoalabum
 // [ACTION REQUIRED] your full name
 define('STUDENT_NAME', 'Suchat Tangjarukij');
 // [ACTION REQUIRED] your Student ID
@@ -49,7 +49,7 @@ define('S3_BASE_URL','https://'.BUCKET_NAME.'.s3.amazonaws.com/');
 // [ACTION REQUIRED] name of the database that stores photo meta-data (note that this is not the DB identifier of the RDS instance)
 define('DB_NAME', 'photoalbum');
 // [ACTION REQUIRED] endpoint of RDS instance
-define('DB_ENDPOINT', 'photo-db.ce0fri9v1t7f.us-east-1.rds.amazonaws.com');
+define('DB_ENDPOINT', 'assignment1b1-dbinstance-bzwth5bbmgbb.cxzbyxeoljs5.us-east-1.rds.amazonaws.com');
 // [ACTION REQUIRED] username of your RDS instance 
 define('DB_USERNAME', 'admin');
 // [ACTION REQUIRED] password of your RDS instance

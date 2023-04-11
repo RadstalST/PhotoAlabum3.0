@@ -41,5 +41,46 @@ class MyDB
 			echo $e;
 		}
 	}
+
+	public function isTableEmpty() {
+		try {
+			$stm = $this->dbh->query ( 'SELECT * FROM ' . DB_PHOTO_TABLE_NAME );
+			$row = $stm->fetch();
+			if ($row) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch ( PDOException $e ) {
+			error_log($e);
+			echo $e;
+		}
+	}
+	public function createTable() {
+		try {
+			$stm = $this->dbh->query ( 'CREATE TABLE ' . DB_PHOTO_TABLE_NAME . ' (
+				' . DB_PHOTO_TITLE_COL_NAME . ' VARCHAR(255) NOT NULL,
+				' . DB_PHOTO_DESCRIPTION_COL_NAME . ' VARCHAR(255) NOT NULL,
+				' . DB_PHOTO_CREATIONDATE_COL_NAME . ' VARCHAR(255) NOT NULL,
+				' . DB_PHOTO_KEYWORDS_COL_NAME . ' VARCHAR(255) NOT NULL,
+				' . DB_PHOTO_S3REFERENCE_COL_NAME . ' VARCHAR(255) NOT NULL
+			)' );
+		} catch ( PDOException $e ) {
+			error_log($e);
+			echo $e;
+		}
+	}
+	public function populateTable() {
+		try {
+			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 1", "Description 1", "2017-01-01", "Keyword 1", "https://'.BUCKET_NAME.'amazonaws.com/Photo1.jpg")' );
+			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 2", "Description 2", "2017-01-02", "Keyword 2", "https://'.BUCKET_NAME.'amazonaws.com/Photo2.jpg"' );
+			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 3", "Description 3", "2017-01-03", "Keyword 3", "https://'.BUCKET_NAME.'amazonaws.com/Photo3.jpg"' );
+			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 4", "Description 4", "2017-01-04", "Keyword 4", "https://'.BUCKET_NAME.'amazonaws.com/Photo4.jpg"' );
+			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' VALUES ("Photo 5", "Description 5", "2017-01-05", "Keyword 5", "https://'.BUCKET_NAME.'amazonaws.com/Photo5.jpg"' );
+		} catch ( PDOException $e ) {
+			error_log($e);
+			echo $e;
+		}
+	}
 }
 ?>
