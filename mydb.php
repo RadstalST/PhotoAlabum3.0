@@ -45,11 +45,11 @@ class MyDB
 		try {
 			$stm = $this->dbh->query ( 'INSERT INTO ' . DB_PHOTO_TABLE_NAME . ' 
 			VALUES 
-				("Photo 1", "Description 1", "2017-01-01", "Keyword 1", "https://'.BUCKET_NAME.'amazonaws.com/Photo1.jpg")
-				,("Photo 2", "Description 2", "2017-01-02", "Keyword 2", "https://'.BUCKET_NAME.'amazonaws.com/Photo2.jpg")
-				,("Photo 3", "Description 3", "2017-01-03", "Keyword 3", "https://'.BUCKET_NAME.'amazonaws.com/Photo3.jpg")
-				,("Photo 4", "Description 4", "2017-01-04", "Keyword 4", "https://'.BUCKET_NAME.'amazonaws.com/Photo4.jpg")
-				,("Photo 5", "Description 5", "2017-01-05", "Keyword 5", "https://'.BUCKET_NAME.'amazonaws.com/Photo5.jpg");' 
+				("Photo 1", "Description 1", "2017-01-01", "Keyword 1", "https://'.BUCKET_NAME.'.s3.amazonaws.com/Photo1.jpeg")
+				,("Photo 2", "Description 2", "2017-01-02", "Keyword 2", "https://'.BUCKET_NAME.'.s3.amazonaws.com/Photo2.jpeg")
+				,("Photo 3", "Description 3", "2017-01-03", "Keyword 3", "https://'.BUCKET_NAME.'.s3.amazonaws.com/Photo3.jpeg")
+				,("Photo 4", "Description 4", "2017-01-04", "Keyword 4", "https://'.BUCKET_NAME.'.s3.amazonaws.com/Photo4.jpeg")
+				,("Photo 5", "Description 5", "2017-01-05", "Keyword 5", "https://'.BUCKET_NAME.'.s3.amazonaws.com/Photo5.jpeg");' 
 			);
 			
 		} catch ( PDOException $e ) {
