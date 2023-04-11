@@ -50,7 +50,7 @@ define('S3_BASE_URL','https://'.BUCKET_NAME.'.s3.amazonaws.com/');
 define('DB_NAME', 'photoalbum');
 // [ACTION REQUIRED] endpoint of RDS instance
 
-define('DB_ENDPOINT',env('DB_ENDPOINT'));
+define('DB_ENDPOINT',getenv('DB_ENDPOINT'));
 // [ACTION REQUIRED] username of your RDS instance 
 define('DB_USERNAME', 'admin');
 // [ACTION REQUIRED] password of your RDS instance
