@@ -40,7 +40,7 @@ define('STUDENT_ID', '103511958');
 define('TUTORIAL_SESSION', 'Thursday 4:30PM');
 
 // [ACTION REQUIRED] name of the S3 bucket that stores images
-define('BUCKET_NAME', 'student-photo-bucket');
+define('BUCKET_NAME', 'assignment1b-bucket');
 // [ACTION REQUIRED] region of the above bucket
 define('REGION', 'us-east-1');
 // no need to update this const
